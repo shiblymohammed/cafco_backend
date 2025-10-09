@@ -26,3 +26,4 @@ class OfferCategoryViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = OfferCategory.objects.filter(is_active=True)
     serializer_class = OfferCategorySerializer
+    lookup_field = 'slug'

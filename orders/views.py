@@ -14,14 +14,9 @@ class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
 
 class MyOrderListView(generics.ListAPIView):
-    """
-    Returns a list of orders for the currently authenticated user.
-    """
     serializer_class = OrderSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] # <--- ADD THIS BACK
 
     def get_queryset(self):
-        # We need to link the NextAuth user to our UserProfile.
-        # For now, we'll match by email.
-        user_email = self.request.user.email
-        return Order.objects.filter(user_email=user_email).order_by('-created_at')
+        # Now we can safely use request.user because JWTAuthentication populated it
+        return Order.objects.filter(user_email=self.request.user.email).order_by('-created_at')

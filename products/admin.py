@@ -23,3 +23,4 @@ class ProductAdmin(admin.ModelAdmin):
 class OfferCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'discount_percentage', 'is_active')
     filter_horizontal = ('products',)
+    prepopulated_fields = {'slug': ('name',)}

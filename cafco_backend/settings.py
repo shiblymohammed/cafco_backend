@@ -47,12 +47,22 @@ INSTALLED_APPS = [
     #third party apps
     'rest_framework',
     'corsheaders',
+    'rest_framework_simplejwt',
 
     #local apps
     'products',
     'users',
     'orders',
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

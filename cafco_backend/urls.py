@@ -7,4 +7,5 @@ urlpatterns = [
     # Add the URLs for your apps under the /api/ prefix
     path('api/', include('products.urls')),
     path('api/', include('orders.urls')),
+    path('api/', include('users.urls')),
 ]

@@ -62,6 +62,7 @@ class Product(models.Model):
 
 class OfferCategory(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
     discount_percentage = models.IntegerField()
     is_active = models.BooleanField(default=True)
     products = models.ManyToManyField(Product, related_name='offers', blank=True)
